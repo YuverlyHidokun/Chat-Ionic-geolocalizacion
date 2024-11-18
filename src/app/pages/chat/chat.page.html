@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title style="text-align: center; font-weight: bold; font-size: 18px;">Chat</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="signOut()">
+        <ion-icon name="log-out" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding chat-container">
+  <ion-grid>
+    <ion-row *ngFor="let message of messages | async">
+      <ion-col
+        size="9"
+        [offset]="message.myMsg ? 3 : 0"
+        [ngClass]="{ 'my-message': message.myMsg, 'other-message': !message.myMsg }"
+        class="message-bubble">
+        <b>{{ message.fromName }}</b><br>
+        <span *ngIf="!message.latitude && !message.longitude">{{ message.msg }}</span>
+        <span *ngIf="message.latitude && message.longitude">
+          <a [href]="'https://www.google.com/maps?q=' + message.latitude + ',' + message.longitude" target="_blank" class="custom-link">
+            Compartió una ubicación
+          </a>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="8">
+        <ion-textarea 
+          [(ngModel)]="messageInput" 
+          autoGrow="true" 
+          class="message-input" 
+          rows="1" 
+          placeholder="Escribe un mensaje..."
+        ></ion-textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="!messageInput.trim()"
+          class="msg-btn" (click)="sendMessage()">
+          <ion-icon name="send" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="tertiary" (click)="sendLocation()">
+          <ion-icon name="location" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
