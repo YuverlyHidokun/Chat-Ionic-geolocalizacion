@@ -5,8 +5,10 @@
 ## Equipo de desarrollo
 
 - [@Luis Guaygua](https://github.com/Kr-luis)
+- [@Yuverly Verdezoto](https://github.com/YuverlyHidokun)
 
-
+##aclaracion
+este repositorio se hiso en colaboracion con el desarrollador Kr-luis
 Basandonos en la [@guía](https://ionicframework.com/docs/native/geolocation) realizamos la lógica y la construcción de la app
 
 **De click [@aqui](https://github.com/Kr-luis/Repaso_Ionic/blob/main/Repaso_ionic.apk) para descargar la aplicación**
